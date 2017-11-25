@@ -10,6 +10,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
+  hero: Hero;
 
   getHeroes() {
     this.heroService.getHeroes()
@@ -20,6 +21,16 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+  }
+
+  addHero(name: string, id: number) {
+    name = name.trim();
+    this.hero = {name: name, id: id};
+    this.heroes.push(this.hero);
+  }
+
+  deleteHero(delhero: Hero) {
+    this.heroes = this.heroes.filter(hero => hero !== delhero);
   }
 
 }

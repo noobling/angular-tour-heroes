@@ -10,6 +10,11 @@ import { HeroService } from '../hero.service';
 export class DashboardComponent implements OnInit {
   heroes: Hero[];
 
+  remoteCall(): void {
+    this.heroService.remoteCall()
+      .subscribe(heroes => this.heroes = heroes);
+  }
+
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
